@@ -1,0 +1,53 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "jsPlugins": [
+    {
+      "name": "formatjs",
+      "specifier": "eslint-plugin-formatjs"
+    }
+  ],
+  "settings": {
+    "formatjs": {
+      "additionalComponentNames": ["CustomFormattedMessage"]
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "src/**/*.{ts,tsx}"
+      ],
+      "rules": {
+        "formatjs/no-offset": "error",
+        "formatjs/enforce-default-message": ["error", "literal"],
+        "formatjs/no-multiple-whitespaces": "error",
+        "formatjs/no-multiple-plurals": "error",
+        "formatjs/no-useless-message": "error",
+        "formatjs/prefer-pound-in-plural": "error",
+        "formatjs/no-missing-icu-plural-one-placeholders": "error",
+        "formatjs/enforce-plural-rules": [
+          "error",
+          {
+            "one": true,
+            "other": true
+          }
+        ],
+        "formatjs/blocklist-elements": ["error", ["selectordinal"]],
+
+        "formatjs/no-emoji": "off",
+        "formatjs/enforce-description": "off",
+        "formatjs/no-complex-selectors": "off",
+        "formatjs/no-literal-string-in-jsx": "off",
+        "formatjs/enforce-placeholders": [
+          "error",
+          {
+            // see CustomFormattedMessage's baseFormatValues list
+            "ignoreList": [
+              "p",
+              "nbsp",
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
